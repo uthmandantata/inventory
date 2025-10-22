@@ -18,7 +18,7 @@ const Login = () => {
         setError(null);
 
         try {
-            const response = await axios.post("http://localhost:3000/api/auth/login", {
+            const response = await axios.post("https://inventory-2g51.onrender.com/api/auth/login", {
                 username, password
             })
             console.log("Response from backend:", response.data); // 👈 add this

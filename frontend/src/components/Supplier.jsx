@@ -55,7 +55,7 @@ const Supplier = () => {
                     return;
                 }
 
-                const response = await axios.get("http://localhost:3000/api/supplier/", {
+                const response = await axios.get("https://inventory-2g51.onrender.com/api/supplier/", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -103,7 +103,7 @@ const Supplier = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.put(
-                    `http://localhost:3000/api/supplier/edit/${editSupplier._id}`,
+                    `https://inventory-2g51.onrender.com/api/supplier/edit/${editSupplier._id}`,
                     updatedSupplier,
                     {
                         headers: {
@@ -174,7 +174,7 @@ const Supplier = () => {
             }
 
             const response = await axios.delete(
-                `http://localhost:3000/api/supplier/delete/${supplierId}`,
+                `https://inventory-2g51.onrender.com/api/supplier/delete/${supplierId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -212,7 +212,7 @@ const Supplier = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "http://localhost:3000/api/supplier/add",
+                    "https://inventory-2g51.onrender.com/api/supplier/add",
                     supplierData,
                     {
                         headers: {

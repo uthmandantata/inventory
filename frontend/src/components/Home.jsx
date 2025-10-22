@@ -87,7 +87,7 @@ const Home = () => {
                 }
 
                 // 🟢 Online: Fetch fresh data
-                const response = await axios.get("http://localhost:3000/api/product/", {
+                const response = await axios.get("https://inventory-2g51.onrender.com/api/product/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -115,7 +115,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get("http://localhost:3000/api/category/", {
+                const response = await axios.get("https://inventory-2g51.onrender.com/api/category/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -143,7 +143,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get("http://localhost:3000/api/supplier/", {
+                const response = await axios.get("https://inventory-2g51.onrender.com/api/supplier/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -175,7 +175,7 @@ const Home = () => {
                 }
 
                 // 🌐 Fetch from API if online
-                const response = await axios.get("http://localhost:3000/api/users/", {
+                const response = await axios.get("https://inventory-2g51.onrender.com/api/users/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

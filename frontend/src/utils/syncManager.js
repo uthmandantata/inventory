@@ -27,13 +27,13 @@ export async function processQueue() {
             };
 
             if (action.type === "ADD_PRODUCT") {
-                await axios.post("http://localhost:3000/api/product/add", action.data, config);
+                await axios.post("https://inventory-2g51.onrender.com/api/product/add", action.data, config);
                 console.log("✅ Synced new product:", action.data.name);
             }
 
             else if (action.type === "EDIT_PRODUCT") {
                 await axios.put(
-                    `http://localhost:3000/api/product/edit/${action.data._id}`,
+                    `https://inventory-2g51.onrender.com/api/product/edit/${action.data._id}`,
                     action.data,
                     config
                 );
@@ -42,26 +42,26 @@ export async function processQueue() {
 
 
             else if (action.type === "ADD_CATEGORY") {
-                await axios.post("http://localhost:3000/api/category/add", action.data, config);
+                await axios.post("https://inventory-2g51.onrender.com/api/category/add", action.data, config);
                 console.log("✅ Synced new category:", action.data.name);
             }
 
             else if (action.type === "EDIT_CATEGORY") {
                 await axios.put(
-                    `http://localhost:3000/api/category/edit/${action.data._id}`,
+                    `https://inventory-2g51.onrender.com/api/category/edit/${action.data._id}`,
                     action.data,
                     config
                 );
                 console.log("✏️ Synced edited category:", action.data.name);
             }
             else if (action.type === "ADD_SUPPLIER") {
-                await axios.post("http://localhost:3000/api/supplier/add", action.data, config);
+                await axios.post("https://inventory-2g51.onrender.com/api/supplier/add", action.data, config);
                 console.log("✅ Synced new supplier:", action.data.name);
             }
 
             else if (action.type === "EDIT_SUPPLIER") {
                 await axios.put(
-                    `http://localhost:3000/api/supplier/edit/${action.data._id}`,
+                    `https://inventory-2g51.onrender.com/api/supplier/edit/${action.data._id}`,
                     action.data,
                     config
                 );
@@ -69,7 +69,7 @@ export async function processQueue() {
             }
             else if (action.type === "EDIT_USER") {
                 await axios.put(
-                    `http://localhost:3000/api/users/edit-profile`,
+                    `https://inventory-2g51.onrender.com/api/users/edit-profile`,
                     action.data,
                     config
                 );

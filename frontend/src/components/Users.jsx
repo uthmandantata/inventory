@@ -45,7 +45,7 @@ const Users = () => {
                 }
 
                 // 🌐 Fetch from API if online
-                const response = await axios.get("http://localhost:3000/api/users/", {
+                const response = await axios.get("https://inventory-2g51.onrender.com/api/users/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

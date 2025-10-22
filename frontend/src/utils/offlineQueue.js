@@ -18,7 +18,7 @@ export const syncQueue = async () => {
     for (let item of queue) {
         try {
             if (item.type === "ADD_PRODUCT") {
-                const response = await fetch("http://localhost:3000/api/product/add", {
+                const response = await fetch("https://inventory-2g51.onrender.com/api/product/add", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

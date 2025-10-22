@@ -1,0 +1,34 @@
+# Node modules
+frontend/node_modules/
+server/node_modules/
+
+# Build outputs
+frontend/build/
+frontend/dist/
+server/dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Environment files
+frontend/.env
+server/.env
+.env
+.env.local
+.env.production
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Other
+coverage/
+*.sqlite
+offlineQueue.json

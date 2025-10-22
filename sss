@@ -1,0 +1,38 @@
+const response = await axios.put(
+                `http://localhost:3000/api/product/edit/${editProduct._id}`,
+                {
+                    name,
+                    categoryId,
+                    supplierId,
+                    sku,
+                    description,
+                    unit,
+                    price,
+                    quantity,
+                    expiryDate,
+                    location,
+                    notes
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("inv-token")}`,
+                    },
+                }
+            );
+
+            if (response.data.success) {
+                const updated = response.data.product;
+
+
+                // Option 2: (Instant UI update if not refreshing)
+                setProducts((prev) =>
+                    prev.map((prod) =>
+                        prod._id === updated._id ? updated : prod
+                    )
+                );
+
+                setIsEditModalOpen(false);
+                setEditProduct(null);
+            } else {
+                setError("Failed to update product.");
+            }

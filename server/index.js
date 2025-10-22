@@ -7,6 +7,7 @@ import supplierRoutes from './routes/Supplier.routes.js'
 import productRoutes from './routes/Product.routes.js';
 import userRoutes from './routes/User.routes.js';
 import cors from "cors"
+import path from "path";
 
 import cookieParser from "cookie-parser";
 
@@ -21,7 +22,7 @@ const PORT = process.env.PORT;
 
 // Allow your frontend origin
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: '*',
     credentials: true, // if you're using cookies or authorization headers
 }));
 app.use(cookieParser()); // must be before routes

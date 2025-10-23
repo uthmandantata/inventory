@@ -254,8 +254,96 @@ const Users = () => {
                             »
                         </button>
                     </nav>
+
                 </div>
             </div>
+            {/* Add User Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 px-4">
+                    <div className="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 rounded-xl shadow-lg relative">
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setIsModalOpen(false)}
+                            className="absolute top-3 right-3 text-gray-500 hover:text-black"
+                        >
+                            ✕
+                        </button>
+
+                        <h2 className="text-2xl font-bold text-center mb-6">
+                            Add New User
+                        </h2>
+
+                        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* Username */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Product Name</label>
+                                <input
+                                    type="text"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"
+                                    required
+                                />
+                            </div>
+
+                            {/* email */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Email</label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"
+                                    required
+                                />
+                            </div>
+
+                            {/* Role */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Role</label>
+                                <select
+                                    value={role}
+                                    onChange={(e) => setRole(e.target.value)}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"
+                                    required
+                                >
+                                    <option value="admin">Admin</option>
+                                    <option value="manager">Manager</option>
+                                </select>
+                            </div>
+                            {/* Address */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">Address</label>
+                                <input
+                                    type="text"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"
+                                    required
+                                />
+                            </div>
+
+                            {/* Error */}
+                            {error && (
+                                <div className="md:col-span-2">
+                                    <p className="text-red-500 text-sm">{error}</p>
+                                </div>
+                            )}
+
+                            {/* Submit */}
+                            <div className="md:col-span-2">
+                                <button
+                                    type="submit"
+                                    className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
+                                    disabled={loading}
+                                >
+                                    {loading ? "Loading..." : "Add Product"}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -21,10 +21,25 @@ const PORT = process.env.PORT;
 
 
 // Allow your frontend origin
-app.use(cors({
-    origin: '*',
-    credentials: true, // if you're using cookies or authorization headers
-}));
+const allowedOrigins = [
+    "https://inventory-chi-flame.vercel.app", // your Vercel frontend
+    "http://localhost:5173", // for local testing
+];
+
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
+        credentials: true,
+    })
+);
+
+
 app.use(cookieParser()); // must be before routes
 
 // Middleware

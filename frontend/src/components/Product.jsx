@@ -4,6 +4,7 @@ import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 import { processQueue } from "../utils/syncManager";
 
 
+
 const Product = () => {
     const [name, setName] = useState("");
     const [categories, setCategories] = useState([]);

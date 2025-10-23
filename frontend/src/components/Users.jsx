@@ -139,7 +139,7 @@ const Users = () => {
         }
     };
 
-    if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
+    // if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
 
     return (
         <div className="p-4">

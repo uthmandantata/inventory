@@ -3,14 +3,14 @@ import axios from "axios";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
-    const [user, setUser] = useState([]);
+
     const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
-    const [isBanned, setIsBanned] = useState(false);
+
     const [address, setAddress] = useState("");
 
     const [error, setError] = useState(null);
@@ -95,16 +95,14 @@ const Users = () => {
         const userData = {
             username,
             email,
-
             address,
-            // isBanned,
         };
 
         try {
             // 🟢 ONLINE MODE
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "https://inventory-2g51.onrender.com/api/users/create-user",
+                    "https://inventory-2g51.onrender.com/api/users/creat-user",
                     userData,
                     {
                         headers: {
@@ -116,41 +114,17 @@ const Users = () => {
                 if (response.data.success) {
                     const newUser = response.data.user;
                     setUsers((prev) => [...(prev || []), newUser]);
-                    alert("✅ User created successfully!");
-                    setIsModalOpen(false);
+                    alert("✅ User added successfully!");
                 } else {
                     setError(response.data.message || "Failed to add user.");
                 }
             }
 
-            // 🔴 OFFLINE MODE
-            else {
-                await addToQueue({
-                    type: "ADD_USER",
-                    data: userData,
-                });
 
-                // 🧠 Update local cache
-                const cached = JSON.parse(localStorage.getItem("cachedUser") || "[]");
-                const newOfflineProduct = {
-                    ...userData,
-                    _id: Date.now(), // fake id
-                    offline: true, // mark as offline
-                };
-
-                cached.push(newOfflineProduct);
-                localStorage.setItem("cachedUser", JSON.stringify(cached));
-
-                // 🧩 Update UI instantly
-                setUser((prev) => [...(prev || []), newOfflineProduct]);
-
-                alert("📦 You’re offline. Product saved locally and will sync automatically when you’re back online.");
-            }
 
             // ✅ Clear form
             setUsername("");
             setEmail("");
-            setRole("");
             setAddress("");
 
             setIsModalOpen(false);
@@ -163,7 +137,7 @@ const Users = () => {
         }
     };
 
-    // if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
+    if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
 
     return (
         <div className="p-4">
@@ -325,9 +299,9 @@ const Users = () => {
                                 <button
                                     type="submit"
                                     className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
-                                // disabled={loading}
+                                    disabled={loading}
                                 >
-                                    Create User
+                                    {loading ? "Loading..." : "Create User"}
                                 </button>
                             </div>
                         </form>

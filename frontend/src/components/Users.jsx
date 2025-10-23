@@ -337,9 +337,9 @@ const Users = () => {
                                 <button
                                     type="submit"
                                     className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
-                                    disabled={loading}
+                                // disabled={loading}
                                 >
-                                    {loading ? "Loading..." : "Create User"}
+                                    Create User
                                 </button>
                             </div>
                         </form>

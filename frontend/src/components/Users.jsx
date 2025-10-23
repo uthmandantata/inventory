@@ -105,7 +105,7 @@ const Users = () => {
             // 🟢 ONLINE MODE
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "https://inventory-2g51.onrender.com/api/user/create-user",
+                    "https://inventory-2g51.onrender.com/api/users/create-user",
                     userData,
                     {
                         headers: {

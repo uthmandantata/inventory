@@ -14,6 +14,10 @@ const Users = () => {
     const [isBanned, setIsBanned] = useState(false);
     const [address, setAddress] = useState("");
 
+    const [isModalOpen, setIsModalOpen] = useState(false); // 👈 modal state
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 👈 modal state
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // 👈 modal state
+
     // Pagination calculations
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -178,6 +182,10 @@ const Users = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring focus:ring-blue-200"
                     />
+                    <button
+                        onClick={() => setIsModalOpen(true)}
+                        className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>Add
+                    </button>
                 </div>
 
                 <div className="max-w-[100rem] border border-gray-200 rounded-lg shadow-sm overflow-hidden">
@@ -214,10 +222,7 @@ const Users = () => {
                         </table>
                     </div>
                 </div>
-                <button
-                    onClick={() => setIsModalOpen(true)}
-                    className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>Add
-                </button>
+
 
                 {/* Pagination */}
                 <div className="py-2 px-4 flex justify-center">

@@ -10,7 +10,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [suppliers, setSuppliers] = useState([]);
-
+    const [user, setUser] = useState(null);
 
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -73,6 +73,34 @@ const Home = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("inv-token");
+
+        const fetchUser = async () => {
+            try {
+                if (!navigator.onLine) {
+                    console.log("📦 Offline: loading user from cache...");
+                    const storedUser = localStorage.getItem("current-user");
+                    if (storedUser) {
+                        setUser(JSON.parse(storedUser));
+                    } else {
+                        console.warn("⚠️ No cached user found.");
+                    }
+                    return;
+                }
+
+                const response = await axios.get("https://inventory-2g51.onrender.com/api/users/me", {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                if (response.data.success) {
+                    setUser(response.data.user);
+                    localStorage.setItem("current-user", JSON.stringify(response.data.user));
+                    console.log("✅ User fetched and cached");
+                }
+            } catch (error) {
+                console.error("❌ Error fetching user:", error);
+                setError("Failed to load user data");
+            }
+        };
 
         const fetchProducts = async () => {
             try {
@@ -204,6 +232,7 @@ const Home = () => {
         fetchSuppliers();
         fetchProducts();
         fetchCategories();
+        fetchUser();
 
     }, [])
 

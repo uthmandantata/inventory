@@ -131,3 +131,19 @@ export const setUserPassword = async (req, res) => {
         });
     }
 };
+
+export const deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const deletedUser = await User.findByIdAndDelete(userId);
+        if (!deletedUser) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+        return res.status(200).json({
+            success: true,
+            message: "User deleted successfully",
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Error in deleteUser Controller", error: error.message });
+    }
+}

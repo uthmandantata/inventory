@@ -14,6 +14,7 @@ const Users = () => {
     const [address, setAddress] = useState("");
 
     const [error, setError] = useState(null);
+    const [editUser, setEditUser] = useState(null);
 
 
 
@@ -138,7 +139,29 @@ const Users = () => {
             setLoading(false);
         }
     };
-
+    const handleDelete = async (userId) => {
+        setError(null);
+        try {
+            const response = await axios.delete(
+                `https://inventory-2g51.onrender.com/api/users/delete-user/${userId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("inv-token")}`,
+                    },
+                }
+            );
+            if (response.data.success) {
+                setUsers((prev) => prev.filter((user) => user._id !== userId));
+                alert("✅ User deleted successfully!");
+                setIsDeleteModalOpen(false);
+            } else {
+                setError(response.data.message || "Failed to delete user.");
+            }
+        } catch (error) {
+            console.error(error);
+            setError(error.response?.data?.message || "Something went wrong.");
+        }
+    };
     // if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
 
     return (
@@ -193,6 +216,28 @@ const Users = () => {
                                             <td className="px-6 py-4 text-sm text-gray-800">{user.email}</td>
                                             <td className="px-6 py-4 text-sm text-gray-800">{user.isBanned ? "Yes" : "No"}</td>
                                             <td className="px-6 py-4 text-sm text-gray-800">{user.role}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium space-x-3">
+                                                <button
+                                                    onClick={() => {
+
+                                                        setEditUser(user); // store selected user
+                                                        setUsername(user.username);
+                                                        setEmail(user.email || "");
+                                                        setAddress(user.address || "");
+
+                                                        setIsEditModalOpen(true);
+                                                    }
+                                                    }
+                                                    type="button"
+                                                    className="inline-flex items-center gap-x-2 text-sm font-semibold cursor-pointer rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Edit</button>
+                                                <button
+                                                    onClick={() => {
+                                                        setEditUser(user); // store selected user
+                                                        setIsDeleteModalOpen(true);
+                                                    }}
+                                                    type="button"
+                                                    className="inline-flex items-center gap-x-2 text-sm font-semibold cursor-pointer rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-hidden focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400">Delete</button>
+                                            </td>
                                         </tr>
                                     ))
                                 )}
@@ -307,6 +352,41 @@ const Users = () => {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+            {/* Delete Category Modal */}
+            {isDeleteModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+                    <div className="bg-white w-full max-w-md p-6 rounded-xl shadow-lg relative">
+                        <button
+                            onClick={() => setIsDeleteModalOpen(false)}
+                            className="absolute top-3 cursor-pointer right-3 text-gray-500 hover:text-black"
+                        >
+                            ✕
+                        </button>
+
+                        <h2 className="text-xl font-bold text-center mb-4">
+                            Are you sure you want to delete this user? <span className="text-red-500">{editUser?.username}</span>
+                        </h2>
+                        <div className='flex space-x-4'>
+                            <button
+                                onClick={() => handleDelete(editUser._id)} // ✅ use category ID
+                                className="w-full cursor-pointer bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg"
+                                disabled={loading}
+                            >
+                                {loading ? "Deleting..." : "Yes, Delete"}
+                            </button>
+
+                            <button
+                                onClick={() => setIsDeleteModalOpen(false)}
+                                className="w-full cursor-pointer bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded-lg"
+                                disabled={loading}
+                            >
+                                Cancel
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             )}

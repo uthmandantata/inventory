@@ -3,10 +3,16 @@ import axios from "axios";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [role, setRole] = useState("manager");
+    const [isBanned, setIsBanned] = useState(false);
+    const [address, setAddress] = useState("");
 
     // Pagination calculations
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -76,6 +82,81 @@ const Users = () => {
         };
     }, []);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        const userData = {
+            username,
+            email,
+            role,
+            address,
+            // isBanned,
+        };
+
+        try {
+            // 🟢 ONLINE MODE
+            if (navigator.onLine) {
+                const response = await axios.post(
+                    "https://inventory-2g51.onrender.com/api/user/create-user",
+                    userData,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("inv-token")}`,
+                        },
+                    }
+                );
+
+                if (response.data.success) {
+                    const newUser = response.data.user;
+                    setUser((prev) => [...(prev || []), newUser]);
+                    alert("✅ User created successfully!");
+                } else {
+                    setError(response.data.message || "Failed to add user.");
+                }
+            }
+
+            // 🔴 OFFLINE MODE
+            else {
+                await addToQueue({
+                    type: "ADD_USER",
+                    data: userData,
+                });
+
+                // 🧠 Update local cache
+                const cached = JSON.parse(localStorage.getItem("cachedUser") || "[]");
+                const newOfflineProduct = {
+                    ...userData,
+                    _id: Date.now(), // fake id
+                    offline: true, // mark as offline
+                };
+
+                cached.push(newOfflineProduct);
+                localStorage.setItem("cachedUser", JSON.stringify(cached));
+
+                // 🧩 Update UI instantly
+                setUser((prev) => [...(prev || []), newOfflineProduct]);
+
+                alert("📦 You’re offline. Product saved locally and will sync automatically when you’re back online.");
+            }
+
+            // ✅ Clear form
+            setUsername("");
+            setEmail("");
+            setRole("manager");
+            setAddress("");
+
+            setIsModalOpen(false);
+
+        } catch (error) {
+            console.error(error);
+            setError(error.response?.data?.message || "Something went wrong.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
 
     return (
@@ -133,6 +214,10 @@ const Users = () => {
                         </table>
                     </div>
                 </div>
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>Add
+                </button>
 
                 {/* Pagination */}
                 <div className="py-2 px-4 flex justify-center">

@@ -10,7 +10,6 @@ const Users = () => {
     const itemsPerPage = 5;
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
-    const [role, setRole] = useState("manager");
     const [isBanned, setIsBanned] = useState(false);
     const [address, setAddress] = useState("");
 
@@ -96,7 +95,7 @@ const Users = () => {
         const userData = {
             username,
             email,
-            role,
+
             address,
             // isBanned,
         };
@@ -300,19 +299,7 @@ const Users = () => {
                                 />
                             </div>
 
-                            {/* Role */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700">Role</label>
-                                <select
-                                    value={role}
-                                    onChange={(e) => setRole(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"
-                                    required
-                                >
-                                    <option value="admin">Admin</option>
-                                    <option value="manager">Manager</option>
-                                </select>
-                            </div>
+
                             {/* Address */}
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Address</label>

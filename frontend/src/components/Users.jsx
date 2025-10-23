@@ -116,7 +116,7 @@ const Users = () => {
 
                 if (response.data.success) {
                     const newUser = response.data.user;
-                    setUser((prev) => [...(prev || []), newUser]);
+                    setUsers((prev) => [...(prev || []), newUser]);
                     alert("✅ User created successfully!");
                 } else {
                     setError(response.data.message || "Failed to add user.");
@@ -150,7 +150,7 @@ const Users = () => {
             // ✅ Clear form
             setUsername("");
             setEmail("");
-            setRole("manager");
+            setRole("");
             setAddress("");
 
             setIsModalOpen(false);

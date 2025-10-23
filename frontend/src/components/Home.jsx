@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 import NotificationBell from './LowStockModal';
-import AIInsights from "../../components/AIInsights";
+import AIInsights from './AIInsights';
 
 const Home = () => {
 

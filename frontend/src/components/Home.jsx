@@ -17,6 +17,7 @@ const Home = () => {
     const itemsPerPage = 5; // change this to 10, 20, etc.
 
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
 
 
@@ -253,13 +254,13 @@ const Home = () => {
 
                     {/* <!-- Grid --> */}
                     <div
-                        className={`grid gap-3 sm:gap-6 ${users?.role === "admin"
+                        className={`grid gap-3 sm:gap-6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"
                             : "sm:grid-cols-1 lg:grid-cols-2"
                             }`}
                     >
-                        {console.log("This is the user's role: ", user.role)}
-                        {users?.role === "admin" ?
+                        {console.log("This is the user's role: ", user?.role)}
+                        {user?.role === "admin" ?
                             <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                                 <div className="p-4 md:p-5">
                                     <div className="flex items-center gap-x-2">
@@ -343,7 +344,7 @@ const Home = () => {
                     {/* <!-- End Grid --> */}
 
                     <div
-                        className={`grid gap-3 sm:gap-6 ${users?.role === "admin"
+                        className={`grid gap-3 sm:gap-6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"
                             : "sm:grid-cols-1 lg:grid-cols-2"
                             }`}
@@ -466,7 +467,7 @@ const Home = () => {
                         {/* <!-- End Card --> */}
 
                         {/* <!-- Card --> */}
-                        {users?.role === "admin"
+                        {user?.role === "admin"
                             ?
 
                             < div className="p-4 md:p-5 min-h-102.5 flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
@@ -609,7 +610,7 @@ const Home = () => {
                                                 type="text"
                                                 placeholder="Search supplier..."
                                                 value={supplierSearch}
-                                                onChange={(e) => filteredSuppliers(e.target.value)}
+                                                onChange={(e) => setSupplierSearch(e.target.value)}
                                                 className="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring focus:ring-blue-200"
                                             />
                                         </div>

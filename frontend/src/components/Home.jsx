@@ -423,7 +423,7 @@ const Home = () => {
 
                                                                 </span>
                                                             </td>
-                                                            <td>{predictLowStock(product)}</td>
+
 
                                                         </tr>
 

@@ -14,6 +14,8 @@ const Users = () => {
     const [isBanned, setIsBanned] = useState(false);
     const [address, setAddress] = useState("");
 
+    const [error, setError] = useState(null);
+
     const [isModalOpen, setIsModalOpen] = useState(false); // 👈 modal state
     const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 👈 modal state
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // 👈 modal state

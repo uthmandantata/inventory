@@ -64,14 +64,14 @@ export const createUser = async (req, res) => {
             { expiresIn: "24h" }
         );
 
-        const link = `${process.env.FRONTEND_URL}/api/users/set-password/?token=${token}`;
+        // const link = `${process.env.FRONTEND_URL}/api/users/set-password/?token=${token}`;
 
-        const html = `
-            <h1>Welcome to Our Platform</h1>
-            <p>Please set your password by clicking the link below:</p>
-            <a href="${link}">Set Password</a>
-        `;
-        await sendEmail(email, "Set Up Your Password", html);
+        // const html = `
+        //     <h1>Welcome to Our Platform</h1>
+        //     <p>Please set your password by clicking the link below:</p>
+        //     <a href="${link}">Set Password</a>
+        // `;
+        // await sendEmail(email, "Set Up Your Password", html);
 
         return res.status(201).json({
             success: true,

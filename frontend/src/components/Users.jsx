@@ -4,7 +4,7 @@ import axios from "axios";
 const Users = () => {
     const [users, setUsers] = useState([]);
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
@@ -14,6 +14,8 @@ const Users = () => {
     const [address, setAddress] = useState("");
 
     const [error, setError] = useState(null);
+
+
 
     const [isModalOpen, setIsModalOpen] = useState(false); // 👈 modal state
     const [isEditModalOpen, setIsEditModalOpen] = useState(false); // 👈 modal state

@@ -102,27 +102,23 @@ const Users = () => {
         };
 
         try {
-            // 🟢 ONLINE MODE
-            if (navigator.onLine) {
-                const response = await axios.post(
-                    "https://inventory-2g51.onrender.com/api/users/create-user",
-                    userData,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem("inv-token")}`,
-                        },
-                    }
-                );
-
-                if (response.data.success) {
-                    const newUser = response.data.user;
-                    setUsers((prev) => [...(prev || []), newUser]);
-                    alert("✅ User added successfully!");
-                } else {
-                    setError(response.data.message || "Failed to add user.");
+            const response = await axios.post(
+                "https://inventory-2g51.onrender.com/api/users/create-user",
+                userData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("inv-token")}`,
+                    },
                 }
-            }
+            );
 
+            if (response.data.success) {
+                const newUser = response.data.user;
+                setUsers((prev) => [...(prev || []), newUser]);
+                alert("✅ User added successfully!");
+            } else {
+                setError(response.data.message || "Failed to add user.");
+            }
 
 
             // ✅ Clear form

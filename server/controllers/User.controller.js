@@ -71,7 +71,7 @@ export const createUser = async (req, res) => {
             <p>Please set your password by clicking the link below:</p>
             <a href="${link}">Set Password</a>
         `;
-        // await sendEmail(email, "Set Up Your Password", html);
+        await sendEmail(email, "Set Up Your Password", html);
 
         return res.status(201).json({
             success: true,

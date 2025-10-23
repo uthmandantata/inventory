@@ -248,11 +248,7 @@ const Home = () => {
                             ⚠️ You’re offline. Any new suppliers will be saved and synced later.
                         </div>
                     )}
-                    <AIInsights
-                        products={products}
-                        suppliers={suppliers}
-                        categories={categories}
-                    />
+
                     <div className="flex items-center justify-between">
                         <h1 className="text-2xl font-bold mb-8">Dashboard Management</h1>
                         <NotificationBell lowStockProducts={lowStockProducts} />
@@ -348,7 +344,11 @@ const Home = () => {
                         {/* <!-- End Card --> */}
                     </div>
                     {/* <!-- End Grid --> */}
-
+                    <AIInsights
+                        products={products}
+                        suppliers={suppliers}
+                        categories={categories}
+                    />
                     <div
                         className={`grid gap-3 sm:gap-6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"

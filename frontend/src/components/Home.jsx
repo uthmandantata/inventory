@@ -229,7 +229,7 @@ const Home = () => {
                             : "sm:grid-cols-1 lg:grid-cols-2"
                             }`}
                     >
-                        {console.log("This is the user's role: ", users.role)}
+                        {console.log("This is the user's role: ", req.user.role)}
                         {users?.role === "admin" ?
                             <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                                 <div className="p-4 md:p-5">

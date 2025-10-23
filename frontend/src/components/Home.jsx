@@ -4,6 +4,7 @@ import axios from 'axios';
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 import NotificationBell from './LowStockModal';
 import AIInsights from './AIInsights';
+import { predictLowStock } from '../utils/aiLogic';
 
 const Home = () => {
 
@@ -423,6 +424,7 @@ const Home = () => {
                                                                     {product.status === "active" ? "Active" : "Out of Stock"}
                                                                 </span>
                                                             </td>
+                                                            <td>{predictLowStock(product)}</td>
 
                                                         </tr>
 

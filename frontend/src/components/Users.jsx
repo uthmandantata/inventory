@@ -163,7 +163,7 @@ const Users = () => {
         }
     };
 
-    if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
+    // if (loading) return <div className="p-4 text-gray-600">Loading...</div>;
 
     return (
         <div className="p-4">
@@ -278,7 +278,7 @@ const Users = () => {
                         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {/* Username */}
                             <div>
-                                <label className="block text-sm font-medium text-gray-700">Product Name</label>
+                                <label className="block text-sm font-medium text-gray-700">Username</label>
                                 <input
                                     type="text"
                                     value={username}
@@ -339,7 +339,7 @@ const Users = () => {
                                     className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
                                     disabled={loading}
                                 >
-                                    {loading ? "Loading..." : "Add Product"}
+                                    {loading ? "Loading..." : "Create User"}
                                 </button>
                             </div>
                         </form>

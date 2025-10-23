@@ -117,6 +117,7 @@ const Users = () => {
                     const newUser = response.data.user;
                     setUsers((prev) => [...(prev || []), newUser]);
                     alert("✅ User created successfully!");
+                    setIsModalOpen(false);
                 } else {
                     setError(response.data.message || "Failed to add user.");
                 }

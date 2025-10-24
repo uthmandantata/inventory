@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import bcrypt from "bcryptjs";
+import { Resend } from "resend";
 
 export const getAllUsers = async (req, res) => {
     try {

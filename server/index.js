@@ -28,14 +28,11 @@ const allowedOrigins = [
 
 app.use(
     cors({
-        origin: function (origin, callback) {
-            if (!origin || allowedOrigins.includes(origin)) {
-                callback(null, true);
-            } else {
-                callback(new Error("Not allowed by CORS"));
-            }
-        },
+        // Use the array directly; express-cors handles the logic correctly.
+        origin: allowedOrigins,
         credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Explicitly allow methods
+        allowedHeaders: ['Content-Type', 'Authorization'], // Explicitly allow headers
     })
 );
 

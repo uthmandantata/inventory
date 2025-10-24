@@ -1,23 +1,14 @@
-import nodemailer from "nodemailer";
+import { Resend } from 'resend';
 
 export const sendEmail = async (to, subject, html) => {
     try {
-        console.log(`✅ Email sent is working`);
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com", // or your mail provider
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.EMAIL_USER, // your email
-                pass: process.env.EMAIL_PASS, // your app password
-            },
-        });
+        const resend = new Resend('re_huFuajFr_cuo1w6N2gSWPRkKq8a63dGTA');
 
-        await transporter.sendMail({
+        resend.emails.send({
             from: `"Your Company" <${process.env.EMAIL_USER}>`,
-            to,
-            subject,
-            html,
+            to: to,
+            subject: subject,
+            html: html
         });
 
         console.log(`✅ Email sent to ${to}`);
@@ -25,3 +16,7 @@ export const sendEmail = async (to, subject, html) => {
         console.error("❌ Email sending failed:", err.message);
     }
 };
+
+
+
+

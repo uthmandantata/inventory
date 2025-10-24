@@ -59,7 +59,7 @@ const Users = () => {
                 }
 
                 // 🌐 Fetch from API if online
-                const response = await axios.get("${process.env.BACKEND_URL}/api/users/", {
+                const response = await axios.get("https://inventory-51yr.onrender.com/api/users/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -103,7 +103,7 @@ const Users = () => {
 
         try {
             const response = await axios.post(
-                "${process.env.BACKEND_URL}/api/users/create-user",
+                "https://inventory-51yr.onrender.com/api/users/create-user",
                 userData,
                 {
                     headers: {
@@ -139,7 +139,7 @@ const Users = () => {
         setError(null);
         try {
             const response = await axios.delete(
-                `${process.env.BACKEND_URL}/api/users/delete-user/${userId}`,
+                `https://inventory-51yr.onrender.com/api/users/delete-user/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("inv-token")}`,

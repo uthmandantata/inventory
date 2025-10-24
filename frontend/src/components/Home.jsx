@@ -89,7 +89,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get(`${process.env.BACKEND_URL}/api/users/me`, {
+                const response = await axios.get(`https://inventory-51yr.onrender.com/api/users/me`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -117,7 +117,7 @@ const Home = () => {
                 }
 
                 // 🟢 Online: Fetch fresh data
-                const response = await axios.get(`${process.env.BACKEND_URL}/api/product/`, {
+                const response = await axios.get(`https://inventory-51yr.onrender.com/api/product/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -145,7 +145,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get(`${process.env.BACKEND_URL}/api/category/ `, {
+                const response = await axios.get(`https://inventory-51yr.onrender.com/api/category/ `, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -173,7 +173,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get(`${process.env.BACKEND_URL}/api/supplier/`, {
+                const response = await axios.get(`https://inventory-51yr.onrender.com/api/supplier/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -205,7 +205,7 @@ const Home = () => {
                 }
 
                 // 🌐 Fetch from API if online
-                const response = await axios.get(`${process.env.BACKEND_URL}/api/users/`, {
+                const response = await axios.get(`https://inventory-51yr.onrender.com/api/users/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

@@ -55,7 +55,7 @@ const Supplier = () => {
                     return;
                 }
 
-                const response = await axios.get("${process.env.BACKEND_URL}/api/supplier/", {
+                const response = await axios.get("https://inventory-51yr.onrender.com/api/supplier/", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -103,7 +103,7 @@ const Supplier = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.put(
-                    `${process.env.BACKEND_URL}/api/supplier/edit/${editSupplier._id}`,
+                    `https://inventory-51yr.onrender.com/api/supplier/edit/${editSupplier._id}`,
                     updatedSupplier,
                     {
                         headers: {
@@ -174,7 +174,7 @@ const Supplier = () => {
             }
 
             const response = await axios.delete(
-                `${process.env.BACKEND_URL}/api/supplier/delete/${supplierId}`,
+                `https://inventory-51yr.onrender.com/api/supplier/delete/${supplierId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -212,7 +212,7 @@ const Supplier = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "${process.env.BACKEND_URL}/api/supplier/add",
+                    "https://inventory-51yr.onrender.com/api/supplier/add",
                     supplierData,
                     {
                         headers: {

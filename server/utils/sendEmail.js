@@ -5,11 +5,12 @@ export const sendEmail = async (to, subject, html) => {
         const resend = new Resend('re_huFuajFr_cuo1w6N2gSWPRkKq8a63dGTA');
 
         await resend.emails.send({
-            from: `"Your Company" <${process.env.EMAIL_USER}>`,
-            to: to,
-            subject: subject,
-            html: html
+            from: "Your Company <onboarding@resend.dev>", // ✅ Correct quote structure
+            to,
+            subject,
+            html,
         });
+
 
         console.log(`✅ Email sent to ${to}`);
     } catch (err) {

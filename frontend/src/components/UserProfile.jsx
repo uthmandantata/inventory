@@ -25,7 +25,7 @@ const UserProfile = () => {
           return;
         }
 
-        const response = await axios.get("https://inventory-2g51.onrender.com/api/users/me", {
+        const response = await axios.get("${process.env.BACKEND_URL}/api/users/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -68,7 +68,7 @@ const UserProfile = () => {
     try {
       if (navigator.onLine) {
         const response = await axios.put(
-          `https://inventory-2g51.onrender.com/api/users/edit-profile/`,
+          `${process.env.BACKEND_URL}/api/users/edit-profile/`,
           {
             username: user.username,
             email: user.email,

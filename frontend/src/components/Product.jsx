@@ -59,7 +59,7 @@ const Product = () => {
                 }
 
                 // 🟢 Online: Fetch fresh data
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/product/", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/product/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -87,7 +87,7 @@ const Product = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/category/", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/category/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -115,7 +115,7 @@ const Product = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/supplier/", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/supplier/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -191,7 +191,7 @@ const Product = () => {
             // 📴 If offline — queue for later sync
             if (navigator.onLine) {
                 const response = await axios.put(
-                    `https://inventory-2g51.onrender.com/api/product/edit/${editProduct._id}`,
+                    `${process.env.BACKEND_URL}/api/product/edit/${editProduct._id}`,
                     updatedProduct,
                     config
                 );
@@ -255,7 +255,7 @@ const Product = () => {
             }
 
             const response = await axios.delete(
-                `https://inventory-2g51.onrender.com/api/product/delete/${productId}`,
+                `${process.env.BACKEND_URL}/api/product/delete/${productId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -304,7 +304,7 @@ const Product = () => {
             // 🟢 ONLINE MODE
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "https://inventory-2g51.onrender.com/api/product/add",
+                    `${process.env.BACKEND_URL}/api/product/add`,
                     productData,
                     {
                         headers: {

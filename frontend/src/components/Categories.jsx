@@ -49,7 +49,7 @@ const Categories = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/category/", {
+                const response = await axios.get("${process.env.BACKEND_URL}/api/category/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -91,7 +91,7 @@ const Categories = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.put(
-                    `https://inventory-2g51.onrender.com/api/category/edit/${editCategory._id}`,
+                    `${process.env.BACKEND_URL}/api/category/edit/${editCategory._id}`,
                     updatedCategory,
                     {
                         headers: {
@@ -157,7 +157,7 @@ const Categories = () => {
             }
 
             const response = await axios.delete(
-                `https://inventory-2g51.onrender.com/api/category/delete/${categoryId}`,
+                `${process.env.BACKEND_URL}/api/category/delete/${categoryId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -196,7 +196,7 @@ const Categories = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "https://inventory-2g51.onrender.com/api/category/add",
+                    "${process.env.BACKEND_URL}/api/category/add",
                     categoryData,
                     {
                         headers: {

@@ -89,7 +89,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/users/me", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/users/me`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -117,7 +117,7 @@ const Home = () => {
                 }
 
                 // 🟢 Online: Fetch fresh data
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/product/", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/product/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -145,7 +145,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/category/", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/category/ `, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -173,7 +173,7 @@ const Home = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/supplier/", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/supplier/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -205,7 +205,7 @@ const Home = () => {
                 }
 
                 // 🌐 Fetch from API if online
-                const response = await axios.get("https://inventory-2g51.onrender.com/api/users/", {
+                const response = await axios.get(`${process.env.BACKEND_URL}/api/users/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -256,7 +256,7 @@ const Home = () => {
 
                     {/* <!-- Grid --> */}
                     <div
-                        className={`grid gap-3 sm:gap-6 ${user?.role === "admin"
+                        className={`grid gap - 3 sm: gap - 6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"
                             : "sm:grid-cols-1 lg:grid-cols-2"
                             }`}
@@ -350,10 +350,10 @@ const Home = () => {
                         categories={categories}
                     />
                     <div
-                        className={`grid gap-3 sm:gap-6 ${user?.role === "admin"
+                        className={`grid gap - 3 sm: gap - 6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"
                             : "sm:grid-cols-1 lg:grid-cols-2"
-                            }`}
+                            } `}
                     >
                         {/* <!-- Card --> */}
                         <div className="p-4 md:p-5 min-h-102.5 flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
@@ -414,11 +414,11 @@ const Home = () => {
 
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
                                                                 <span
-                                                                    className={`inline-flex items-center px-3 py-1 text-xs font-medium rounded-full 
+                                                                    className={`inline - flex items - center px - 3 py - 1 text - xs font - medium rounded - full 
                                                             ${product.status === "active"
                                                                             ? "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-100"
                                                                             : "bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-100"
-                                                                        }`}
+                                                                        } `}
                                                                 >
 
                                                                 </span>
@@ -448,10 +448,10 @@ const Home = () => {
                                                 <button
                                                     key={i + 1}
                                                     onClick={() => setCurrentPage(i + 1)}
-                                                    className={`min-w-10 flex justify-center items-center py-2.5 text-sm rounded-full ${currentPage === i + 1
+                                                    className={`min - w - 10 flex justify - center items - center py - 2.5 text - sm rounded - full ${currentPage === i + 1
                                                         ? "bg-blue-600 text-white"
                                                         : "text-gray-800 hover:bg-gray-100"
-                                                        }`}
+                                                        } `}
                                                 >
                                                     {i + 1}
                                                 </button>
@@ -562,10 +562,10 @@ const Home = () => {
                                                     <button
                                                         key={i + 1}
                                                         onClick={() => setCurrentPage(i + 1)}
-                                                        className={`min-w-10 flex justify-center items-center py-2.5 text-sm rounded-full ${currentPage === i + 1
+                                                        className={`min - w - 10 flex justify - center items - center py - 2.5 text - sm rounded - full ${currentPage === i + 1
                                                             ? "bg-blue-600 text-white"
                                                             : "text-gray-800 hover:bg-gray-100"
-                                                            }`}
+                                                            } `}
                                                     >
                                                         {i + 1}
                                                     </button>
@@ -672,10 +672,10 @@ const Home = () => {
                                                 <button
                                                     key={i + 1}
                                                     onClick={() => setCurrentPage(i + 1)}
-                                                    className={`min-w-10 flex justify-center items-center py-2.5 text-sm rounded-full ${currentPage === i + 1
+                                                    className={`min - w - 10 flex justify - center items - center py - 2.5 text - sm rounded - full ${currentPage === i + 1
                                                         ? "bg-blue-600 text-white"
                                                         : "text-gray-800 hover:bg-gray-100"
-                                                        }`}
+                                                        } `}
                                                 >
                                                     {i + 1}
                                                 </button>

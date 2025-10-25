@@ -44,7 +44,7 @@ app.use(
 );
 
 // ✅ STEP 3: Handle OPTIONS preflight requests globally
-app.options("*", cors());
+app.options("/*", cors({ origin: allowedOrigins, credentials: true }));
 
 
 

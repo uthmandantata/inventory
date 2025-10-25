@@ -80,6 +80,7 @@ export const createUser = async (req, res) => {
             user: newUser,
         });
     } catch (error) {
+        console.log("Error is:", error.message)
         res.status(500).json({ success: false, message: "Error in createUser Controller", error: error.message });
     }
 }

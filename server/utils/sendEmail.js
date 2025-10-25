@@ -7,13 +7,13 @@ export const sendEmail = async (to, subject, html) => {
             port: 587,
             secure: false, // use TLS
             auth: {
-                user: "focalleap@gmail.com", // e.g. yourname@gmail.com
-                pass: "xsmtpsib-a67ebf58964bf5ee5771009b35538a83baf7620672c84215a8a5d170996f3382-p9ox1GHyDBuWGMq5", // your Brevo SMTP key
+                user: process.env.BREVO_USER, // e.g. yourname@gmail.com
+                pass: process.env.BREVO_PASS, // your Brevo SMTP key
             },
         });
 
         await transporter.sendMail({
-            from: `"Inventory App" focalleap@gmail.com`,
+            from: `"Inventory App" <${process.env.BREVO_USER}>`,
             to,
             subject,
             html,

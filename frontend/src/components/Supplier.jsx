@@ -3,7 +3,7 @@ import axios from 'axios';
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 
 const Supplier = () => {
-    const BACKEND_URL = process.env.BACKEND_URL
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [name, setName] = useState("");
     const [contactInfo, setContactInfo] = useState("");
     const [address, setAddress] = useState("");

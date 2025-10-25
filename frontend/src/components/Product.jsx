@@ -7,7 +7,7 @@ import { processQueue } from "../utils/syncManager";
 
 const Product = () => {
     const [name, setName] = useState("");
-    const BACKEND_URL = process.env.BACKEND_URL
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [categories, setCategories] = useState([]);
     const [categoryId, setCategoryId] = useState("");
     const [suppliers, setSuppliers] = useState([]);

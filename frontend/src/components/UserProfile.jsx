@@ -3,7 +3,7 @@ import axios from "axios";
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 
 const UserProfile = () => {
-  const BACKEND_URL = process.env.BACKEND_URL
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);

@@ -6,7 +6,7 @@ import NotificationBell from './LowStockModal';
 import AIInsights from './AIInsights';
 
 const Home = () => {
-    const BACKEND_URL = process.env.BACKEND_URL
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);

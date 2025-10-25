@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 
 const Login = () => {
-    const BACKEND_URL = process.env.BACKEND_URL
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);

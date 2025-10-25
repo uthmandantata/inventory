@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
-    const BACKEND_URL = process.env.BACKEND_URL
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [loading, setLoading] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);

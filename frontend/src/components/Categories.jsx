@@ -5,7 +5,7 @@ import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 
 
 const Categories = () => {
-    const BACKEND_URL = process.env.BACKEND_URL
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [editCategory, setEditCategory] = useState(null);

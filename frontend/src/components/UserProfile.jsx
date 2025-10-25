@@ -3,6 +3,7 @@ import axios from "axios";
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 
 const UserProfile = () => {
+  const BACKEND_URL = process.env.BACKEND_URL
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,7 @@ const UserProfile = () => {
           return;
         }
 
-        const response = await axios.get("https://inventory-51yr.onrender.com/api/users/me", {
+        const response = await axios.get(`${BACKEND_URL}/api/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -68,7 +69,7 @@ const UserProfile = () => {
     try {
       if (navigator.onLine) {
         const response = await axios.put(
-          `https://inventory-51yr.onrender.com/api/users/edit-profile/`,
+          `${BACKEND_URL}/api/users/edit-profile/`,
           {
             username: user.username,
             email: user.email,

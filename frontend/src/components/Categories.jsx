@@ -5,6 +5,7 @@ import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 
 
 const Categories = () => {
+    const BACKEND_URL = process.env.BACKEND_URL
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [editCategory, setEditCategory] = useState(null);
@@ -49,7 +50,7 @@ const Categories = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-51yr.onrender.com/api/category/", {
+                const response = await axios.get(`${BACKEND_URL}/api/category/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -91,7 +92,7 @@ const Categories = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.put(
-                    `https://inventory-51yr.onrender.com/api/category/edit/${editCategory._id}`,
+                    `${BACKEND_URL}/api/category/edit/${editCategory._id}`,
                     updatedCategory,
                     {
                         headers: {
@@ -157,7 +158,7 @@ const Categories = () => {
             }
 
             const response = await axios.delete(
-                `https://inventory-51yr.onrender.com/api/category/delete/${categoryId}`,
+                `${BACKEND_URL}/api/category/delete/${categoryId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -196,7 +197,7 @@ const Categories = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "https://inventory-51yr.onrender.com/api/category/add",
+                    `${BACKEND_URL}/api/category/add`,
                     categoryData,
                     {
                         headers: {

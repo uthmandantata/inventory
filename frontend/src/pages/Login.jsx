@@ -19,7 +19,7 @@ const Login = () => {
 
         try {
             const response = await axios.post(
-                "https://inventory-2g51.onrender.com/api/auth/login",
+                "https://inventory-51yr.onrender.com.com/api/auth/login",
                 { username, password },
                 { withCredentials: true }
             )

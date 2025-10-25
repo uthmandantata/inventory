@@ -3,6 +3,7 @@ import axios from 'axios';
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 
 const Supplier = () => {
+    const BACKEND_URL = process.env.BACKEND_URL
     const [name, setName] = useState("");
     const [contactInfo, setContactInfo] = useState("");
     const [address, setAddress] = useState("");
@@ -55,7 +56,7 @@ const Supplier = () => {
                     return;
                 }
 
-                const response = await axios.get("https://inventory-51yr.onrender.com/api/supplier/", {
+                const response = await axios.get(`${BACKEND_URL}/api/supplier/`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -103,7 +104,7 @@ const Supplier = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.put(
-                    `https://inventory-51yr.onrender.com/api/supplier/edit/${editSupplier._id}`,
+                    `${BACKEND_URL}/api/supplier/edit/${editSupplier._id}`,
                     updatedSupplier,
                     {
                         headers: {
@@ -174,7 +175,7 @@ const Supplier = () => {
             }
 
             const response = await axios.delete(
-                `https://inventory-51yr.onrender.com/api/supplier/delete/${supplierId}`,
+                `${BACKEND_URL}/api/supplier/delete/${supplierId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -212,7 +213,7 @@ const Supplier = () => {
         try {
             if (navigator.onLine) {
                 const response = await axios.post(
-                    "https://inventory-51yr.onrender.com/api/supplier/add",
+                    `${BACKEND_URL}/api/supplier/add`,
                     supplierData,
                     {
                         headers: {

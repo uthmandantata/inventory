@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
-
+    const BACKEND_URL = process.env.BACKEND_URL
     const [loading, setLoading] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
@@ -59,7 +59,7 @@ const Users = () => {
                 }
 
                 // 🌐 Fetch from API if online
-                const response = await axios.get("https://inventory-51yr.onrender.com/api/users/", {
+                const response = await axios.get(`${BACKEND_URL}/api/users/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -103,7 +103,7 @@ const Users = () => {
 
         try {
             const response = await axios.post(
-                "https://inventory-51yr.onrender.com/api/users/create-user",
+                `${BACKEND_URL}/api/users/create-user`,
                 userData,
                 {
                     headers: {
@@ -139,7 +139,7 @@ const Users = () => {
         setError(null);
         try {
             const response = await axios.delete(
-                `https://inventory-51yr.onrender.com/api/users/delete-user/${userId}`,
+                `${BACKEND_URL}/api/users/delete-user/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("inv-token")}`,

@@ -7,7 +7,7 @@ import supplierRoutes from './routes/Supplier.routes.js'
 import productRoutes from './routes/Product.routes.js';
 import userRoutes from './routes/User.routes.js';
 import cors from "cors"
-import path from "path";
+
 
 import cookieParser from "cookie-parser";
 
@@ -26,15 +26,26 @@ const allowedOrigins = [
     "http://localhost:5173", // for local testing
 ];
 
+// ✅ STEP 2: Apply CORS middleware FIRST — before any other middleware
 app.use(
     cors({
-        // Use the array directly; express-cors handles the logic correctly.
-        origin: allowedOrigins,
+        origin: function (origin, callback) {
+            // Allow requests with no origin (like mobile apps or curl)
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
         credentials: true,
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Explicitly allow methods
-        allowedHeaders: ['Content-Type', 'Authorization'], // Explicitly allow headers
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
     })
 );
+
+// ✅ STEP 3: Handle OPTIONS preflight requests globally
+app.options("*", cors());
+
 
 
 app.use(cookieParser()); // must be before routes

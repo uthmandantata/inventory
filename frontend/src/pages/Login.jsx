@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 
 const Login = () => {
+    const BACKEND_URL = process.env.BACKEND_URL
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
@@ -19,7 +20,7 @@ const Login = () => {
 
         try {
             const response = await axios.post(
-                "https://inventory-51yr.onrender.com.com/api/auth/login",
+                `${BACKEND_URL}/api/auth/login`,
                 { username, password },
                 { withCredentials: true }
             )

@@ -43,8 +43,7 @@ app.use(
     })
 );
 
-// ✅ STEP 3: Handle OPTIONS preflight requests globally
-app.options("*", cors({ origin: allowedOrigins, credentials: true }));
+
 
 
 
@@ -60,9 +59,7 @@ app.use('/api/supplier', supplierRoutes)
 app.use('/api/product', productRoutes)
 app.use('/api/users', userRoutes)
 
-app.get("*", (req, res) => {
-    res.send("Server is running 🚀");
-});
+
 
 app.listen(PORT, () => {
     dbConnect();

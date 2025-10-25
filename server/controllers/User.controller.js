@@ -59,20 +59,20 @@ export const createUser = async (req, res) => {
         const newUser = new User({ username, email, address, role });
         await newUser.save();
 
-        const token = jwt.sign(
-            { userId: newUser._id },
-            process.env.JWT_SECRET,
-            { expiresIn: "24h" }
-        );
+        // const token = jwt.sign(
+        //     { userId: newUser._id },
+        //     process.env.JWT_SECRET,
+        //     { expiresIn: "24h" }
+        // );
 
-        const link = `https://inventory-chi-flame.vercel.app/api/users/set-password/?token=${token}`;
+        // const link = `https://inventory-chi-flame.vercel.app/api/users/set-password/?token=${token}`;
 
-        const html = `
-            <h1>Welcome to Our Platform</h1>
-            <p>Please set your password by clicking the link below:</p>
-            <a href="${link}">Set Password</a>
-        `;
-        await sendEmail(email, "Set Up Your Password", html);
+        // const html = `
+        //     <h1>Welcome to Our Platform</h1>
+        //     <p>Please set your password by clicking the link below:</p>
+        //     <a href="${link}">Set Password</a>
+        // `;
+        // await sendEmail(email, "Set Up Your Password", html);
         console.log(`✅ Password setup email sent to ${email}`);
 
         return res.status(201).json({

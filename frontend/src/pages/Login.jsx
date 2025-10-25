@@ -18,9 +18,11 @@ const Login = () => {
         setError(null);
 
         try {
-            const response = await axios.post("https://inventory-2g51.onrender.com/api/auth/login", {
-                username, password
-            })
+            const response = await axios.post(
+                "https://inventory-2g51.onrender.com/api/auth/login",
+                { username, password },
+                { withCredentials: true }
+            )
             console.log("Response from backend:", response.data); // 👈 add this
             if (response.data.success) {
                 await login(response.data.user, response.data.token);

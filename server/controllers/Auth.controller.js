@@ -23,7 +23,7 @@ export const login = async (req, res) => {
         }
         const token = generateTokenAndCookies(res, userExists._id, userExists.role);
 
-
+        res.setHeader("Access-Control-Allow-Credentials", "true");
         res.status(200).json({
             success: true,
             message: "Login successful",

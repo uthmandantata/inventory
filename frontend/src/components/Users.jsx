@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Users = () => {
-    const [users, setUsers] = useState([]);
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+    const [users, setUsers] = useState([]);
+
     const [loading, setLoading] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
@@ -109,6 +110,7 @@ const Users = () => {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("inv-token")}`,
                     },
+                    withCredentials: true,
                 }
             );
 
@@ -116,17 +118,13 @@ const Users = () => {
                 const newUser = response.data.user;
                 setUsers((prev) => [...(prev || []), newUser]);
                 alert("✅ User added successfully!");
+                setIsModalOpen(false);
+                setUsername("");
+                setEmail("");
+                setAddress("")
             } else {
                 setError(response.data.message || "Failed to add user.");
             }
-
-
-            // ✅ Clear form
-            setUsername("");
-            setEmail("");
-            setAddress("");
-
-            setIsModalOpen(false);
 
         } catch (error) {
             console.error(error);

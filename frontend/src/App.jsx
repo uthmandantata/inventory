@@ -43,7 +43,10 @@ const App = () => {
         <Route
           path="/admin/dashboard"
           element={
-            <Dasboard />
+            <ProtectedRoutes requiredRole={["admin", "manager"]}>
+              <Dasboard />
+            </ProtectedRoutes>
+
           }
         >
           {/* child route that renders inside <Outlet /> */}

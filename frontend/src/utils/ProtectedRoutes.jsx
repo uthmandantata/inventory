@@ -9,7 +9,7 @@ const ProtectedRoutes = ({ children, requiredRole }) => {
 
 
     useEffect(() => {
-        console.log("ProtectedRoutes user:", user);
+        // console.log("ProtectedRoutes user:", user);
         if (!user) {
             navigate('/login');
             return;

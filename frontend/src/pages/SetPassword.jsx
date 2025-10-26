@@ -11,6 +11,7 @@ const SetPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [token, setToken] = useState("")
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -23,7 +24,7 @@ const SetPassword = () => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            setMessage("Passwords do not match");
+            setError("Passwords do not match");
             return;
         }
 
@@ -35,14 +36,14 @@ const SetPassword = () => {
             });
 
             if (response.data.success) {
-                setMessage("✅ Password set successfully! You can now log in.");
+                setError("✅ Password set successfully! You can now log in.");
                 navigate("/login")
             } else {
-                setMessage("❌ Failed to set password.");
+                setError("❌ Failed to set password.");
             }
         } catch (error) {
             console.error(error);
-            setMessage(error.response?.data?.message || "Something went wrong.");
+            setError(error.response?.data?.message || "Something went wrong.");
         } finally {
             setLoading(false);
         }
@@ -57,11 +58,11 @@ const SetPassword = () => {
                         <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Set New Password</h1>
                     </div>
                     <div className="mt-5">
-                        {/* {error && (
+                        {error && (
                             <div className="bg-red-200 text-red-700 p-2 mb-4 rounded">
                                 {error}
                             </div>
-                        )} */}
+                        )}
                         {/* <!-- Form --> */}
                         <form onSubmit={handleSubmit}>
                             <div className="grid gap-y-4">

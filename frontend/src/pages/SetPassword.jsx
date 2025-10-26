@@ -20,11 +20,11 @@ const SetPassword = () => {
                         <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Set New Password</h1>
                     </div>
                     <div className="mt-5">
-                        {error && (
+                        {/* {error && (
                             <div className="bg-red-200 text-red-700 p-2 mb-4 rounded">
                                 {error}
                             </div>
-                        )}
+                        )} */}
                         {/* <!-- Form --> */}
                         <form onSubmit={handleSubmit}>
                             <div className="grid gap-y-4">

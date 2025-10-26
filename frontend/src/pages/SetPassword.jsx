@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 const SetPassword = () => {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -34,6 +35,7 @@ const SetPassword = () => {
 
             if (response.data.success) {
                 setMessage("✅ Password set successfully! You can now log in.");
+                navigate("/login")
             } else {
                 setMessage("❌ Failed to set password.");
             }

@@ -15,6 +15,7 @@ import UserProfile from './components/UserProfile'
 import GuestRoutes from './utils/GuestRoutes'
 import Logout from './pages/Logout'
 import { processQueue } from "./utils/syncManager";
+import SetPassword from './pages/SetPassword'
 
 const App = () => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const App = () => {
           }
         />
         <Route path="/register" element={<Register />} />
+        <Route path="/set-password" element={<SetPassword />} />
         <Route path="/unauthorized" element={<h1>Unauthorized</h1>} />
         <Route path="/" element={<Root />} />
         {/* <Route path="/customer/dashboard" element={<h1>Admin Dashboard</h1>} /> */}
@@ -41,9 +43,6 @@ const App = () => {
         <Route
           path="/admin/dashboard"
           element={
-            // <ProtectedRoutes requiredRole={["admin", "customer"]}>
-            //   <Dasboard />
-            // </ProtectedRoutes>
             <Dasboard />
           }
         >

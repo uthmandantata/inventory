@@ -65,7 +65,7 @@ export const createUser = async (req, res) => {
             { expiresIn: "24h" }
         );
 
-        const link = `https://inventory-chi-flame.vercel.app/api/users/set-password/?token=${token}`;
+        const link = `https://inventory-chi-flame.vercel.app/set-password?token=${token}`;
 
         const html = `
             <h1>Welcome to Our Platform</h1>

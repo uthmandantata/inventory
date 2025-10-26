@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendEmail = async (to, subject, html) => {
     try {
         const response = await resend.emails.send({
-            from: "Inventory App <noreply@onresend.com>",
+            from: "Inventory App <onboarding@resend.dev>",
             to,
             subject,
             html,

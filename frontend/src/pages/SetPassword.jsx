@@ -12,6 +12,7 @@ const SetPassword = () => {
     const [token, setToken] = useState("")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
+    const navigate = useNavigate();
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);

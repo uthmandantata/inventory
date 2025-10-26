@@ -9,6 +9,7 @@ const SetPassword = () => {
     // const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [token, setToken] = useState("")
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {

@@ -253,6 +253,7 @@ const Home = () => {
                     <div className="space-y-6">
 
                         <AiAssistant />
+                        dd
                     </div>
                     <div className="flex items-center justify-between">
                         <h1 className="text-2xl font-bold mb-8">Dashboard Management</h1>

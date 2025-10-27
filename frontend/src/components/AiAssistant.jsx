@@ -1,6 +1,6 @@
 // src/components/AiAssistant.jsx
 import React, { useState } from "react";
-import { MessageCircle } from "lucide-react";
+// import { MessageCircle } from "lucide-react";
 
 const AiAssistant = () => {
     const [open, setOpen] = useState(false);
@@ -43,7 +43,7 @@ const AiAssistant = () => {
                 onClick={() => setOpen(!open)}
                 className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700"
             >
-                <MessageCircle className="w-5 h-5" />
+                {/* <MessageCircle className="w-5 h-5" /> */}
             </button>
 
             {open && (
@@ -56,8 +56,8 @@ const AiAssistant = () => {
                             <div
                                 key={i}
                                 className={`p-2 rounded-lg text-sm ${msg.sender === "ai"
-                                        ? "bg-gray-100 text-gray-800 self-start"
-                                        : "bg-blue-600 text-white self-end ml-auto"
+                                    ? "bg-gray-100 text-gray-800 self-start"
+                                    : "bg-blue-600 text-white self-end ml-auto"
                                     }`}
                             >
                                 {msg.text}

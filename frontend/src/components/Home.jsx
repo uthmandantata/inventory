@@ -4,6 +4,8 @@ import axios from 'axios';
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 import NotificationBell from './LowStockModal';
 import AIInsights from './AIInsights';
+import AiAssistant from './AiAssistant';
+
 
 const Home = () => {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -248,7 +250,10 @@ const Home = () => {
                             ⚠️ You’re offline. Any new suppliers will be saved and synced later.
                         </div>
                     )}
+                    <div className="space-y-6">
 
+                        <AiAssistant />
+                    </div>
                     <div className="flex items-center justify-between">
                         <h1 className="text-2xl font-bold mb-8">Dashboard Management</h1>
                         <NotificationBell lowStockProducts={lowStockProducts} />

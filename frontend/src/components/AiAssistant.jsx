@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { MessageCircle } from "lucide-react";
 
 const AiAssistant = () => {
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState([
         { sender: "ai", text: "Hi 👋, I'm your Inventory Assistant. How can I help?" }
@@ -19,7 +20,7 @@ const AiAssistant = () => {
         setLoading(true);
 
         try {
-            const res = await fetch("https://inventory-2g51.onrender.com/api/ai/ask", {
+            const res = await fetch(`${BACKEND_URL}/api/ai/ask`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ query: input }),
@@ -43,7 +44,7 @@ const AiAssistant = () => {
                 onClick={() => setOpen(!open)}
                 className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700"
             >
-                fff
+                Help
             </button>
 
             {open && (

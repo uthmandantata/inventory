@@ -1,6 +1,6 @@
 // src/components/AiAssistant.jsx
 import React, { useState } from "react";
-// import { MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 const AiAssistant = () => {
     const [open, setOpen] = useState(false);

@@ -1,6 +1,7 @@
-// server/routes/ai.routes.js
 import express from "express";
-import fetch from "node-fetch";
+import Product from "../models/Product.model.js";
+import Supplier from "../models/Supplier.model.js";
+import Category from "../models/Category.model.js";
 
 const router = express.Router();
 
@@ -8,26 +9,30 @@ router.post("/ask", async (req, res) => {
   const { query } = req.body;
 
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: "You are an assistant for an Inventory Management App. Respond briefly and helpfully." },
-          { role: "user", content: query }
-        ]
-      })
-    });
+    let answer = "Sorry, I couldn’t understand your question.";
 
-    const data = await response.json();
-    res.json({ reply: data.choices[0].message.content });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "AI request failed" });
+    const lowerQuery = query.toLowerCase();
+
+    if (lowerQuery.includes("total products") || lowerQuery.includes("how many products")) {
+      const count = await Product.countDocuments();
+      answer = `You currently have ${count} products in inventory.`;
+    }
+    else if (lowerQuery.includes("suppliers")) {
+      const count = await Supplier.countDocuments();
+      answer = `There are ${count} registered suppliers.`;
+    }
+    else if (lowerQuery.includes("low stock")) {
+      const lowStock = await Product.find({ quantity: { $lt: 10 } });
+      answer = `You have ${lowStock.length} products running low on stock.`;
+    }
+    else if (lowerQuery.includes("categories")) {
+      const count = await Category.countDocuments();
+      answer = `There are ${count} product categories in your system.`;
+    }
+
+    res.json({ success: true, answer });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error answering question", error });
   }
 });
 

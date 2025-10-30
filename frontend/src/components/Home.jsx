@@ -4,7 +4,8 @@ import axios from 'axios';
 import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 import NotificationBell from './LowStockModal';
 import AIInsights from './AIInsights';
-import AiAssistant from './AiAssistant';
+
+import AskInventory from './AskInventory';
 
 
 const Home = () => {
@@ -253,7 +254,7 @@ const Home = () => {
                     )}
                     <div className="space-y-6">
 
-                        <AiAssistant />
+                        <AskInventory />
                         dd
                     </div>
                     <div className="flex items-center justify-between">

@@ -243,6 +243,7 @@ const Home = () => {
 
     return (
         <div>
+
             <div className="w-full ">
                 <div className="p-4 sm:p-6 sm:space-y-6">
                     {!navigator.onLine && (

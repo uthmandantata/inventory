@@ -416,7 +416,7 @@ const Product = () => {
                                             <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Price</th>
                                             <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Quantity</th>
 
-                                            <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Status</th>
+                                            {/* <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Status</th> */}
                                             <th scope="col" className="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Actions</th>
                                         </tr>
                                     </thead>
@@ -440,7 +440,7 @@ const Product = () => {
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{product.price}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{product.quantity}</td>
 
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
+                                                {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
                                                     <span
                                                         className={`inline-flex items-center px-3 py-1 text-xs font-medium rounded-full 
                                                             ${product.status === "active"
@@ -450,7 +450,7 @@ const Product = () => {
                                                     >
                                                         {product.status === "active" ? "Active" : "Out of Stock"}
                                                     </span>
-                                                </td>
+                                                </td> */}
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium space-x-3">

@@ -495,8 +495,7 @@ const Home = () => {
                                                     <thead className="bg-gray-50 dark:bg-neutral-700">
                                                         <tr>
                                                             <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Userame</th>
-                                                            <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Email</th>
-                                                            <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Is Banned</th>
+
                                                             <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">role</th>
 
                                                         </tr>
@@ -512,8 +511,7 @@ const Home = () => {
                                                         {currentUsers && currentUsers.map((user, index) => (
                                                             <tr key={index}>
                                                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{user.username}</td>
-                                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{user.email}</td>
-                                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{user.isBanned}</td>
+
                                                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{user.role}</td>
                                                             </tr>
                                                         ))}
@@ -577,7 +575,7 @@ const Home = () => {
                             {/* <!-- End Header --> */}
 
                             <div className="lg:w-full">
-                                <div className="bg-white shadow-md rounded-lg p-4">
+                                <div className="bg-white">
                                     <div className="flex justify-between items-center mb-4">
 
                                         <div className="flex items-center space-x-2">

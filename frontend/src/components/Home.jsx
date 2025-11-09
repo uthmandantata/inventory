@@ -253,7 +253,7 @@ const Home = () => {
 
                     {/* <!-- Grid --> */}
                     <div
-                        className={`grid gap - 3 sm: gap - 6 ${user?.role === "admin"
+                        className={`grid gap-3 sm:gap-6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"
                             : "sm:grid-cols-1 lg:grid-cols-2"
                             }`}
@@ -280,12 +280,7 @@ const Home = () => {
                                         <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
                                             {users.length}
                                         </h3>
-                                        <span className="flex items-center gap-x-1 text-green-600">
-                                            <svg className="inline-block size-4 self-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg>
-                                            <span className="inline-block text-sm">
-                                                1.7%
-                                            </span>
-                                        </span>
+
                                     </div>
                                 </div>
                             </div>
@@ -325,25 +320,18 @@ const Home = () => {
                                     <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
                                         {suppliers.length}
                                     </h3>
-                                    <span className="flex items-center gap-x-1 text-red-600">
-                                        <svg className="inline-block size-4 self-center" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /><polyline points="16 17 22 17 22 11" /></svg>
-                                        <span className="inline-block text-sm">
-                                            1.7%
-                                        </span>
-                                    </span>
+
                                 </div>
                             </div>
                         </div>
                         {/* <!-- End Card --> */}
 
-                        {/* <!-- Card --> */}
 
-                        {/* <!-- End Card --> */}
                     </div>
                     {/* <!-- End Grid --> */}
 
                     <div
-                        className={`grid gap - 3 sm: gap - 6 ${user?.role === "admin"
+                        className={`grid gap-3 sm:gap-6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"
                             : "sm:grid-cols-1 lg:grid-cols-2"
                             } `}
@@ -376,7 +364,7 @@ const Home = () => {
                                                 className="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring focus:ring-blue-200"
                                             />
                                         </div>
-                                        <a href="/products" className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>View All</a>
+                                        <a href="/dashboard/products" className='bg-blue-500 text-center text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>View All</a>
 
                                     </div>
 
@@ -477,15 +465,9 @@ const Home = () => {
                                         <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-neutral-200">
                                             Users
                                         </h2>
-
                                     </div>
 
-                                    <div>
-                                        <span className="py-[5px] px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-md bg-teal-100 text-teal-800 dark:bg-teal-500/10 dark:text-teal-500">
-                                            <svg className="inline-block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
-                                            25%
-                                        </span>
-                                    </div>
+
                                 </div>
                                 {/* <!-- End Header --> */}
 
@@ -502,7 +484,7 @@ const Home = () => {
                                                     className="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring focus:ring-blue-200"
                                                 />
                                             </div>
-                                            <a href="/users" className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>View All</a>
+                                            <a href="/dashboard/users" className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>View All</a>
 
                                         </div>
 
@@ -591,13 +573,6 @@ const Home = () => {
                                     </h2>
 
                                 </div>
-
-                                <div>
-                                    <span className="py-[5px] px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-md bg-teal-100 text-teal-800 dark:bg-teal-500/10 dark:text-teal-500">
-                                        <svg className="inline-block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
-                                        25%
-                                    </span>
-                                </div>
                             </div>
                             {/* <!-- End Header --> */}
 
@@ -614,10 +589,8 @@ const Home = () => {
                                                 className="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring focus:ring-blue-200"
                                             />
                                         </div>
-                                        <button
+                                        <a href="/dashboard/suppliers" className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>View All</a>
 
-                                            className='bg-blue-500 text-white p-2 w-34 cursor-pointer rounded-md hover:bg-blue-600'>Add
-                                        </button>
                                     </div>
 
                                     <div className="overflow-hidden">

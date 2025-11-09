@@ -5,8 +5,6 @@ import { addToQueue, setupSyncListener } from "../utils/offlineQueue";
 import NotificationBell from './LowStockModal';
 import AIInsights from './AIInsights';
 
-import AskInventory from './AskInventory';
-
 
 const Home = () => {
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -247,16 +245,7 @@ const Home = () => {
 
             <div className="w-full ">
                 <div className="p-4 sm:p-6 sm:space-y-6">
-                    {!navigator.onLine && (
-                        <div className="bg-yellow-400 text-black text-center p-2 rounded-md mb-3">
-                            ⚠️ You’re offline. Any new suppliers will be saved and synced later.
-                        </div>
-                    )}
-                    <div className="space-y-6">
 
-                        <AskInventory />
-                        dd
-                    </div>
                     <div className="flex items-center justify-between">
                         <h1 className="text-2xl font-bold mb-8">Dashboard Management</h1>
                         <NotificationBell lowStockProducts={lowStockProducts} />
@@ -352,11 +341,7 @@ const Home = () => {
                         {/* <!-- End Card --> */}
                     </div>
                     {/* <!-- End Grid --> */}
-                    <AIInsights
-                        products={products}
-                        suppliers={suppliers}
-                        categories={categories}
-                    />
+
                     <div
                         className={`grid gap - 3 sm: gap - 6 ${user?.role === "admin"
                             ? "sm:grid-cols-2 lg:grid-cols-3"
@@ -422,7 +407,7 @@ const Home = () => {
 
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
                                                                 <span
-                                                                    className={`inline - flex items - center px - 3 py - 1 text - xs font - medium rounded - full 
+                                                                    className={`flex items - center px - 3 py - 1 text - xs font - medium rounded - full 
                                                             ${product.status === "active"
                                                                             ? "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-100"
                                                                             : "bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-100"

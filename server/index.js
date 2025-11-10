@@ -25,6 +25,7 @@ const PORT = process.env.PORT;
 const allowedOrigins = [
     "https://inventory-chi-flame.vercel.app",
     "https://ambefoundation.vercel.app",
+    "angelsofhopefoundation.vercel.app",
     "http://localhost:5173", // for local testing
 ];
 

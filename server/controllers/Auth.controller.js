@@ -49,18 +49,18 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { username, email, password, address } = req.body;
 
         const userExists = await User.findOne({ username });
 
-        if (!username || !email || !password) {
+        if (!username || !email || !password || !address) {
             return res.status(400).json({ success: false, message: "All fields are required!" });
         }
         if (userExists) {
             return res.status(400).json({ success: false, message: "User already exists! Login" });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = new User({ username, email, password: hashedPassword });
+        const newUser = new User({ username, email, password: hashedPassword, address });
         await newUser.save();
         return res.status(201).json({
             success: true,

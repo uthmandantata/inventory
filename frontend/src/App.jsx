@@ -83,6 +83,7 @@ const App = () => {
             path="logout"
             element={<Logout />}
           />
+
         </Route>
       </Routes>
     </Router>

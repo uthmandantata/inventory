@@ -86,7 +86,7 @@ const Login = () => {
                                 <div>
                                     <div className="flex flex-wrap justify-between items-center gap-2">
                                         <label htmlFor="password" className="block text-sm mb-2 dark:text-white">Password</label>
-                                        <a className="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium dark:text-blue-500" href="../examples/html/recover-account.html">Forgot password?</a>
+
                                     </div>
                                     <div className="relative">
                                         <input

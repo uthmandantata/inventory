@@ -39,7 +39,7 @@ const AIInsights = ({ products, suppliers, categories }) => {
             </h2>
             <ul className="space-y-2 text-gray-600 dark:text-neutral-400">
                 {insights.map((insight, index) => (
-                    <li key={index} className="flex items-start">
+                    <li key={index} className="flex items-start">dd
                         <span>{insight}</span>
                     </li>
                 ))}

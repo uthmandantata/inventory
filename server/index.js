@@ -23,7 +23,8 @@ const PORT = process.env.PORT;
 
 // Allow your frontend origin
 const allowedOrigins = [
-    "https://inventory-chi-flame.vercel.app", // your Vercel frontend
+    "https://inventory-chi-flame.vercel.app",
+    "https://ambefoundation.vercel.app",
     "http://localhost:5173", // for local testing
 ];
 

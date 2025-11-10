@@ -7,7 +7,7 @@ import supplierRoutes from './routes/Supplier.routes.js'
 import productRoutes from './routes/Product.routes.js';
 import userRoutes from './routes/User.routes.js';
 import cors from "cors"
-import assistantRoutes from "./routes/Ai.routes.js";
+
 
 
 import cookieParser from "cookie-parser";
@@ -59,7 +59,6 @@ app.use('/api/category', categoryRoutes)
 app.use('/api/supplier', supplierRoutes)
 app.use('/api/product', productRoutes)
 app.use('/api/users', userRoutes)
-app.use("/api/assistant", assistantRoutes);
 
 
 
